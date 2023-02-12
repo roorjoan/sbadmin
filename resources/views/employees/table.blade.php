@@ -10,7 +10,7 @@
             href="{{ route('employees.create') }}">Register employee</a>
 
         <!--Reporte excel-->
-        <a class="btn btn-primary btn-sm d-none d-sm-inline-block" role="button" href="#"><i
+        <a class="btn btn-primary btn-sm d-none d-sm-inline-block" role="button" href="{{ route('employees.excel') }}"><i
                 class="fas fa-download fa-sm text-white-50"></i>Generate Report</a>
     </div>
 
