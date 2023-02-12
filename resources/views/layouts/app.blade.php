@@ -12,7 +12,14 @@
     <link rel="stylesheet" href="{{ asset('datatables/jquery.dataTables.min.css') }}">
 </head>
 
-<body id="page-top">
+<body id="page-top p-0 m-0">
+
+    @if (session('status'))
+        <div class="text-center bg-success text-primary">
+            {{ session('status') }}
+        </div>
+    @endif
+
     <div id="wrapper">
 
         <!--navegacion-->

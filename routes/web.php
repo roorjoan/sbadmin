@@ -19,6 +19,8 @@ Route::view('/', 'dashboard')->name('dashboard');
 Route::view('/profile', 'users.profile')->name('users.profile');
 
 Route::get('/employees', [EmployeeController::class, 'index'])->name('employees.table');
+Route::get('/employees/create', [EmployeeController::class, 'create'])->name('employees.create');
+Route::post('/employees', [EmployeeController::class, 'store'])->name('employees.store');
 
 Route::view('/login', 'auth.login')->name('login');
 Route::view('/register', 'auth.register')->name('register');
