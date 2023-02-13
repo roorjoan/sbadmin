@@ -33,7 +33,7 @@
     @enderror
 </div>
 
-<div class="col-md-4">
+<!--<div class="col-md-4">
     <label for="office" class="form-label">Office</label>
     <select id="office" name="office" class="form-select">
         <option selected>Choose...</option>
@@ -42,6 +42,21 @@
         <option value="San Francisco">San Francisco</option>
         <option value="New York">New York</option>
     </select>
+</div>-->
+
+<div class="col-md-4">
+    <label for="office" class="form-label">Office</label>
+    <input class="form-control" list="datalistOptions" id="office" name="office" placeholder="Type to search...">
+    <datalist id="datalistOptions">
+        <option value="San Francisco">
+        <option value="Buenos Aires">
+        <option value="New York">
+        <option value="Seattle">
+        <option value="Tokyo">
+        <option value="London">
+        <option value="Montevideo">
+        <option value="Chicago">
+    </datalist>
 </div>
 
 <div class="col-12">

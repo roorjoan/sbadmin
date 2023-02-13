@@ -22,6 +22,7 @@ Route::get('/employees', [EmployeeController::class, 'index'])->name('employees.
 Route::get('/employees/create', [EmployeeController::class, 'create'])->name('employees.create');
 Route::post('/employees', [EmployeeController::class, 'store'])->name('employees.store');
 Route::get('/employees-list-excel', [EmployeeController::class, 'exportExcel'])->name('employees.excel');
+Route::post('/employees-import-excel', [EmployeeController::class, 'importExcel'])->name('employees.import.excel');
 
 Route::view('/login', 'auth.login')->name('login');
 Route::view('/register', 'auth.register')->name('register');

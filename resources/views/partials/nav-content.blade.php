@@ -97,17 +97,58 @@
                         data-bs-toggle="dropdown" href="#"><span
                             class="d-none d-lg-inline me-2 text-gray-600 small">Valeria Perez</span><img
                             class="border rounded-circle img-profile" src="{{ asset('img/avatars/avatar1.jpeg') }}"></a>
-                    <div class="dropdown-menu shadow dropdown-menu-end animated--grow-in"><a class="dropdown-item"
-                            href="#"><i class="fas fa-user fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Profile</a><a
-                            class="dropdown-item" href="{{ route('users.profile') }}"><i
-                                class="fas fa-cogs fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Settings</a><a
-                            class="dropdown-item" href="#"><i
-                                class="fas fa-list fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Activity log</a>
-                        <div class="dropdown-divider"></div><a class="dropdown-item" href="#"><i
-                                class="fas fa-sign-out-alt fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Logout</a>
+
+                    <div class="dropdown-menu shadow dropdown-menu-end animated--grow-in">
+                        <a class="dropdown-item" href="{{ route('users.profile') }}"><i
+                                class="fas fa-user fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;
+                            Profile
+                        </a>
+                        <a class="dropdown-item" href="{{ route('employees.create') }}">
+                            <i class="fas fa-cogs fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;
+                            Add employee
+                        </a>
+
+                        <a class="dropdown-item" href="#" data-bs-toggle="modal"
+                            data-bs-target="#exampleModal">
+                            <i class="fas fa-list fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;
+                            Import data
+                        </a>
+
+                        <div class="dropdown-divider"></div>
+
+                        <a class="dropdown-item" href="#" onclick="this.closest('form').submit()">
+                            <i class="fas fa-sign-out-alt fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;
+                            Logout
+                        </a>
                     </div>
                 </div>
             </li>
         </ul>
     </div>
 </nav>
+
+<!--modal import excel-->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Import employee data from excel</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                <!--formulario para importar excel-->
+                <form action="{{ route('employees.import.excel') }}" method="post" enctype="multipart/form-data">
+                    @csrf
+
+                    <div class="input-group mb-3">
+                        <input type="file" class="form-control" id="inputGroupFile02" name="file">
+                        <label class="input-group-text text-danger" for="inputGroupFile02">*excel only</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary justify-content-end">Import</button>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
