@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,7 +15,7 @@ use App\Http\Controllers\EmployeeController;
 |
 */
 
-Route::view('/', 'dashboard')->name('dashboard');
+Route::get('/', [HomeController::class, 'index'])->name('dashboard');
 
 Route::view('/profile', 'users.profile')->name('users.profile');
 

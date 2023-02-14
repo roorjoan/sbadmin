@@ -54,6 +54,8 @@
     <script src="{{ asset('js/theme.js') }}"></script>
     <script src="{{ asset('datatables/jqueryv3.6.1.min.js') }}"></script>
     <script src="{{ asset('datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('js/chart.min.js') }}"></script>
+    @yield('scripts')
 </body>
 
 </html>
