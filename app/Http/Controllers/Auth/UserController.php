@@ -58,4 +58,34 @@ class UserController extends Controller
 
         return to_route('login')->with('status', 'You are logged out');
     }
+
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'name' =>       ['required', 'string'],
+            'last_name' =>  [],
+            'email' =>      ['required', 'email'],
+            'password' =>   ['required', Password::defaults()]
+        ]);
+
+        User::find($id)->update([
+            'name' =>       $request->name,
+            'last_name' =>  $request->last_name,
+            'email' =>      $request->email,
+            'password' =>   bcrypt($request->password)
+        ]);
+
+        return to_route('users.profile')->with('status', 'User updated successfully!');
+    }
+
+    public function searchFor(Request $request)
+    {
+        $validated = $request->validate([
+            'name' => 'required',
+        ]);
+
+        $users = User::where('name', 'LIKE', '%' . $validated . '%')->get();
+
+        return to_route('dashboard', compact('users'));
+    }
 }

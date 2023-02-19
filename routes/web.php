@@ -18,7 +18,6 @@ use App\Http\Controllers\HomeController;
 
 Route::middleware('auth')->group(function () {
     Route::get('/', [HomeController::class, 'index'])->name('dashboard');
-    Route::view('/profile', 'users.profile')->name('users.profile');
 
     Route::get('/employees', [EmployeeController::class, 'index'])->name('employees.table');
     Route::get('/employees/create', [EmployeeController::class, 'create'])->name('employees.create');
@@ -27,6 +26,8 @@ Route::middleware('auth')->group(function () {
     Route::post('/employees-import-excel', [EmployeeController::class, 'importExcel'])->name('employees.import.excel');
     //Route::post('/reset', [EmployeeController::class, 'reset'])->name('reset');
 
+    Route::view('/profile', 'users.profile')->name('users.profile');
+    Route::patch('/profile/{user}', [UserController::class, 'update'])->name('users.update');
     Route::post('/logout', [UserController::class, 'destroy'])->name('logout');
 });
 
