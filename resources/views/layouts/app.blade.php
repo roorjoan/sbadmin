@@ -9,10 +9,10 @@
     <link rel="stylesheet" href="{{ asset('fonts/fontawesome-all.min.css') }}">
     <link rel="stylesheet" href="{{ asset('fonts/font-awesome.min.css') }}">
     <link rel="stylesheet" href="{{ asset('fonts/fontawesome5-overrides.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('datatables/jquery.dataTables.min.css') }}">
+    @yield('css')
 </head>
 
-<body id="page-top p-0 m-0">
+<body id="page-top">
 
     @if (session('status'))
         <div class="text-center bg-success text-primary">
@@ -48,14 +48,10 @@
         <a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
     </div>
 
-    <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('bootstrap/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('js/bs-init.js') }}"></script>
     <script src="{{ asset('js/theme.js') }}"></script>
-    <script src="{{ asset('datatables/jqueryv3.6.1.min.js') }}"></script>
-    <script src="{{ asset('datatables/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ asset('js/chart.min.js') }}"></script>
-    @yield('scripts')
+    @yield('javascript')
 </body>
 
 </html>

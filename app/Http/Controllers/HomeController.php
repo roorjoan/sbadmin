@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use LaravelDaily\LaravelCharts\Classes\LaravelChart;
 use App\Models\Employee;
+use App\Models\User;
 
 class HomeController extends Controller
 {
@@ -12,8 +13,11 @@ class HomeController extends Controller
     {
         $chart = $this->showChartBar();
         $chart1 = $this->showChartPie();
+        $max = $this->earningsMonthly();
+        $usersTotal = User::count();
+        $employeesTotal = Employee::count();
 
-        return view('dashboard', compact('chart', 'chart1'));
+        return view('dashboard', compact('chart', 'chart1', 'max', 'usersTotal', 'employeesTotal'));
     }
 
     private function showChartBar()
@@ -45,5 +49,10 @@ class HomeController extends Controller
         $chart = new LaravelChart($chart_options);
 
         return $chart;
+    }
+
+    private function earningsMonthly()
+    {
+        return Employee::max('salary');
     }
 }

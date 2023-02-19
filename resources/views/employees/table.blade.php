@@ -2,6 +2,10 @@
 
 @section('title', 'Table')
 
+@section('css')
+    <link rel="stylesheet" href="{{ asset('datatables/jquery.dataTables.min.css') }}">
+@endsection
+
 @section('content')
 
     <div class="d-sm-flex justify-content-between align-items-center mb-4">
@@ -19,37 +23,40 @@
         <div class="card-body">
 
             <!--Tabla employees-->
-            <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
-                <table class="table my-0" id="miDataTable">
-                    <thead>
+            <table class="table" id="myDataTable">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Position</th>
+                        <th>Office</th>
+                        <th>Age</th>
+                        <th>Start date</th>
+                        <th>Salary</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @foreach ($employees as $employee)
                         <tr>
-                            <th>Id</th>
-                            <th>Name</th>
-                            <th>Position</th>
-                            <th>Office</th>
-                            <th>Age</th>
-                            <th>Start date</th>
-                            <th>Salary</th>
+                            <td>{{ $employee->id }}</td>
+                            <td>{{ $employee->name }}</td>
+                            <td>{{ $employee->position }}</td>
+                            <td>{{ $employee->office }}</td>
+                            <td>{{ $employee->age }}</td>
+                            <td>{{ $employee->created_at }}</td>
+                            <td>${{ $employee->salary }}</td>
                         </tr>
-                    </thead>
-                    <tbody>
+                    @endforeach
 
-                        @foreach ($employees as $employee)
-                            <tr>
-                                <td>{{ $employee->id }}</td>
-                                <td>{{ $employee->name }}</td>
-                                <td>{{ $employee->position }}</td>
-                                <td>{{ $employee->office }}</td>
-                                <td>{{ $employee->age }}</td>
-                                <td>{{ $employee->created_at }}</td>
-                                <td>${{ $employee->salary }}</td>
-                            </tr>
-                        @endforeach
-
-                    </tbody>
-                </table>
-            </div>
+                </tbody>
+            </table>
 
         </div>
     </div>
+@endsection
+@section('javascript')
+    <script src="{{ asset('datatables/jqueryv3.6.1.min.js') }}"></script>
+    <script src="{{ asset('datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('js/app.js') }}"></script>
 @endsection

@@ -36,7 +36,8 @@
                                     <div class="col">
                                         <div class="mb-3"><label class="form-label" for="email"><strong>Email
                                                     Address</strong></label><input class="form-control" type="email"
-                                                id="email" placeholder="user@example.com" name="email">
+                                                id="email" name="email"
+                                                value="{{ Auth::user()->email }}">
                                         </div>
                                     </div>
                                     <div class="col">
@@ -50,12 +51,14 @@
                                     <div class="col">
                                         <div class="mb-3"><label class="form-label" for="first_name"><strong>First
                                                     Name</strong></label><input class="form-control" type="text"
-                                                id="first_name" placeholder="John" name="first_name"></div>
+                                                id="first_name" name="first_name"
+                                                value="{{ Auth::user()->name }}"></div>
                                     </div>
                                     <div class="col">
                                         <div class="mb-3"><label class="form-label" for="last_name"><strong>Last
                                                     Name</strong></label><input class="form-control" type="text"
-                                                id="last_name" placeholder="Doe" name="last_name"></div>
+                                                id="last_name" name="last_name"
+                                                value="{{ Auth::user()->last_name }}"></div>
                                     </div>
                                 </div>
                             </div>

@@ -95,7 +95,7 @@
             <li class="nav-item dropdown no-arrow">
                 <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" aria-expanded="false"
                         data-bs-toggle="dropdown" href="#"><span
-                            class="d-none d-lg-inline me-2 text-gray-600 small">Valeria Perez</span><img
+                            class="d-none d-lg-inline me-2 text-gray-600 small">{{ Auth::user()->name }}</span><img
                             class="border rounded-circle img-profile" src="{{ asset('img/avatars/avatar1.jpeg') }}"></a>
 
                     <div class="dropdown-menu shadow dropdown-menu-end animated--grow-in">
@@ -116,10 +116,14 @@
 
                         <div class="dropdown-divider"></div>
 
-                        <a class="dropdown-item" href="#" onclick="this.closest('form').submit()">
-                            <i class="fas fa-sign-out-alt fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;
-                            Logout
-                        </a>
+                        <form action="{{ route('logout') }}" method="post">
+                            @csrf
+
+                            <a class="dropdown-item" href="#" onclick="this.closest('form').submit()">
+                                <i class="fas fa-sign-out-alt fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;
+                                Logout
+                            </a>
+                        </form>
                     </div>
                 </div>
             </li>
@@ -138,15 +142,7 @@
             <div class="modal-body">
 
                 <!--formulario para importar excel-->
-                <form action="{{ route('employees.import.excel') }}" method="post" enctype="multipart/form-data">
-                    @csrf
-
-                    <div class="input-group mb-3">
-                        <input type="file" class="form-control" id="inputGroupFile02" name="file">
-                        <label class="input-group-text text-danger" for="inputGroupFile02">*excel only</label>
-                    </div>
-                    <button type="submit" class="btn btn-primary justify-content-end">Import</button>
-                </form>
+                @include('employees.form-import-excel')
 
             </div>
         </div>

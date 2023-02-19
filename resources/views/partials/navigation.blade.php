@@ -13,14 +13,8 @@
                     href="{{ route('users.profile') }}"><i class="fas fa-user"></i><span>Profile</span></a></li>
             <li class="nav-item"><a class="nav-link {{ request()->routeIs('employees.table') ? 'active' : '' }}"
                     href="{{ route('employees.table') }}"><i class="fas fa-table"></i><span>Table</span></a></li>
-
-            <li class="nav-item"><a class="nav-link {{ request()->routeIs('login') ? 'active' : '' }}"
-                    href="{{ route('login') }}"><i class="far fa-user-circle"></i><span>Login</span></a></li>
-            <li class="nav-item"><a class="nav-link {{ request()->routeIs('register') ? 'active' : '' }}"
-                    href="{{ route('register') }}"><i class="fas fa-user-circle"></i><span>Register</span></a></li>
-
-
         </ul>
+
         <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle"
                 type="button"></button></div>
     </div>

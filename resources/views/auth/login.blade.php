@@ -17,23 +17,32 @@
                                 <div class="text-center">
                                     <h4 class="text-dark mb-4">Welcome Back!</h4>
                                 </div>
-                                <form class="user">
+                                <form class="user" action="{{ route('login') }}" method="POST">
+                                    @csrf
+
                                     <div class="mb-3">
                                         <input class="form-control form-control-user" type="email" id="exampleInputEmail"
-                                            aria-describedby="emailHelp" placeholder="Enter Email Address..."
-                                            name="email">
+                                            aria-describedby="emailHelp" placeholder="Enter Email Address..." name="email"
+                                            value="{{ old('email') }}" autofocus>
+                                        @error('email')
+                                            <p class="text-danger">{{ $message }}</p>
+                                        @enderror
                                     </div>
                                     <div class="mb-3">
                                         <input class="form-control form-control-user" type="password"
                                             id="exampleInputPassword" placeholder="Password" name="password">
+                                        @error('password')
+                                            <p class="text-danger">{{ $message }}</p>
+                                        @enderror
                                     </div>
                                     <div class="mb-3">
                                         <div class="custom-control custom-checkbox small">
                                             <div class="form-check">
                                                 <input class="form-check-input custom-control-input" type="checkbox"
-                                                    id="formCheck-1"><label class="form-check-label custom-control-label"
-                                                    for="formCheck-1">
-                                                    Remember Me</label>
+                                                    id="formCheck-1" name="remember">
+                                                <label class="form-check-label custom-control-label" for="formCheck-1">
+                                                    Remember Me
+                                                </label>
                                             </div>
                                         </div>
                                     </div>

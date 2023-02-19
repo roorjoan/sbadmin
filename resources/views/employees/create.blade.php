@@ -1,15 +1,12 @@
 @extends('layouts.app')
 
-@section('title', 'Save')
+@section('title', 'Register')
 
 @section('content')
     <div class="m-3">
-        <h1>Register a new employee</h1>
+        <h1>Register a new employee</h1><br>
 
-        <form class="row g-3" action="{{ route('employees.store') }}" method="post">
-            @csrf
-            @include('employees.form-create')
-        </form>
+        @include('employees.form-create')
 
         <a class="btn btn-link" href="{{ route('employees.table') }}">Regresar</a>
     </div>
