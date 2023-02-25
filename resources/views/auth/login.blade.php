@@ -23,14 +23,15 @@
                                     <div class="mb-3">
                                         <input class="form-control form-control-user" type="email" id="exampleInputEmail"
                                             aria-describedby="emailHelp" placeholder="Enter Email Address..." name="email"
-                                            value="{{ old('email') }}" autofocus>
+                                            value="{{ old('email', 'admin@email.com') }}" autofocus>
                                         @error('email')
                                             <p class="text-danger">{{ $message }}</p>
                                         @enderror
                                     </div>
                                     <div class="mb-3">
                                         <input class="form-control form-control-user" type="password"
-                                            id="exampleInputPassword" placeholder="Password" name="password">
+                                            id="exampleInputPassword" placeholder="Password" name="password"
+                                            value="Admin123">
                                         @error('password')
                                             <p class="text-danger">{{ $message }}</p>
                                         @enderror
