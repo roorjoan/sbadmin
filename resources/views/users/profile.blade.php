@@ -89,11 +89,8 @@
 
                                 <div class="mb-3"><label class="form-label"
                                         for="address"><strong>Address</strong></label>
-                                    <input class="form-control" type="text" id="address" placeholder="Sunset Blvd, 38"
-                                        name="address">
-                                    @error('address')
-                                        <p class="text-danger">{{ $message }}</p>
-                                    @enderror
+                                    <input class="form-control" type="text" id="address" name="address"
+                                        value="{{ old('address', Auth::user()->profile->address != null ? Auth::user()->profile->address : '') }}">
                                 </div>
 
                                 <div class="row">
@@ -101,15 +98,17 @@
                                     <div class="col">
                                         <div class="mb-3"><label class="form-label"
                                                 for="city"><strong>City</strong></label>
-                                            <input class="form-control" type="text" id="city"
-                                                placeholder="Los Angeles" name="city">
+                                            <input class="form-control" type="text" id="city" name="city"
+                                                value="{{ old('city', Auth::user()->profile->city != null ? Auth::user()->profile->city : '') }}">
                                         </div>
                                     </div>
 
                                     <div class="col">
                                         <div class="mb-3"><label class="form-label"
-                                                for="country"><strong>Country</strong></label><input class="form-control"
-                                                type="text" id="country" placeholder="USA" name="country"></div>
+                                                for="country"><strong>Country</strong></label>
+                                            <input class="form-control" type="text" id="country" name="country"
+                                                value="{{ old('country', Auth::user()->profile->country != null ? Auth::user()->profile->country : '') }}">
+                                        </div>
                                     </div>
 
                                 </div>

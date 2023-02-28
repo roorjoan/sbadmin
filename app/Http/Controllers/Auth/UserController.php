@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Profile;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rules\Password;
 use Illuminate\Validation\ValidationException;
@@ -15,7 +16,6 @@ class UserController extends Controller
     {
         $request->validate([
             'name' =>       ['required', 'string', 'min:2'],
-            'last_name' =>  [],
             'email' =>      ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' =>   ['required', 'confirmed', Password::defaults()]
         ]);
@@ -63,7 +63,6 @@ class UserController extends Controller
     {
         $request->validate([
             'name' =>       ['required', 'string'],
-            'last_name' =>  [],
             'email' =>      ['required', 'email'],
             'password' =>   ['required', Password::defaults()]
         ]);
@@ -73,6 +72,14 @@ class UserController extends Controller
             'last_name' =>  $request->last_name,
             'email' =>      $request->email,
             'password' =>   bcrypt($request->password)
+        ]);
+
+        Profile::updateOrCreate([
+            'user_id' =>    $id
+        ], [
+            'address' =>    $request->address,
+            'city' =>       $request->city,
+            'country' =>    $request->country
         ]);
 
         return to_route('users.profile')->with('status', 'User updated successfully!');
